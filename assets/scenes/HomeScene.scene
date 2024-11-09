@@ -285,7 +285,7 @@
         "__id__": 10
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 13
@@ -403,9 +403,9 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 254,
-      "b": 250,
+      "r": 196,
+      "g": 197,
+      "b": 142,
       "a": 255
     },
     "_spriteFrame": {
@@ -509,9 +509,9 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
+      "r": 196,
+      "g": 197,
+      "b": 142,
       "a": 255
     },
     "_spriteFrame": {
@@ -687,9 +687,9 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
+      "r": 196,
+      "g": 197,
+      "b": 142,
       "a": 255
     },
     "_spriteFrame": {
@@ -793,9 +793,9 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
+      "r": 196,
+      "g": 197,
+      "b": 142,
       "a": 255
     },
     "_spriteFrame": {
