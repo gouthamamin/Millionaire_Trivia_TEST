@@ -22,6 +22,7 @@ export class BackgroundLightHandler extends Component {
     console.log("BackgroundLightHandler init");
     this.setupInitialLightEffects();
     this.animateLight_1_Flare();
+    this.animateMiddlePillarLights();
   }
 
   private setupInitialLightEffects(): void {
@@ -84,9 +85,31 @@ export class BackgroundLightHandler extends Component {
           .to(1, { opacity: 255 })
           .call(() => {
             console.log("light_1_flare finished");
+            // this.animateMiddlePillarLights();
           })
           .start();
       })
       .start();
+  }
+
+  private animateMiddlePillarLights(): void {
+    const leftPillarChildren = this.middle_pillar_light.getChildByName("left-pillar").children;
+    const rightPillarChildren = this.middle_pillar_light.getChildByName("right-pillar").children;
+
+    const animateLights = (lights: Node[]) => {
+      lights.forEach((light, index) => {
+        const uiOpacity = light.getComponent(UIOpacity);
+        tween(uiOpacity)
+          .delay(index * 0.2)
+          .to(0.3, { opacity: 255 })
+          .to(0.3, { opacity: 0 })
+          .start();
+      });
+    };
+
+    this.schedule(() => {
+      animateLights(leftPillarChildren);
+      animateLights(rightPillarChildren);
+    }, 1);
   }
 }
