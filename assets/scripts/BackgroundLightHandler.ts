@@ -25,6 +25,7 @@ export class BackgroundLightHandler extends Component {
   }
 
   private setupInitialLightEffects(): void {
+    // light_2_flare
     const light_1_flare_left_side =
       this.light_1_flare.getChildByName("left-side");
     const light_1_flare_right_side =
@@ -34,6 +35,33 @@ export class BackgroundLightHandler extends Component {
     light_1_flare_right_side.getComponent(UIOpacity).opacity = 0;
     light_1_flare_left_side.setScale(0, 0, 0);
     light_1_flare_right_side.setScale(0, 0, 0);
+
+    // light_2_flare
+    const light_2_flare_left_side =
+      this.light_2_flare.getChildByName("left-side");
+    const light_2_flare_right_side =
+      this.light_2_flare.getChildByName("right-side");
+
+
+    // light_side_flare
+    const light_side_flare_left_side =
+      this.light_side_flare.getChildByName("left-side");
+    const light_side_flare_right_side =
+      this.light_side_flare.getChildByName("right-side");
+
+    // middle pillar lights
+    const middle_pillar_light_left_side =
+      this.middle_pillar_light.getChildByName("left-pillar");
+    const middle_pillar_light_right_side =
+      this.middle_pillar_light.getChildByName("right-pillar");
+    
+    for(let i=0;i<middle_pillar_light_left_side.children.length;i++){
+      middle_pillar_light_left_side.children[i].getComponent(UIOpacity).opacity = 0;
+    }
+    for(let i=0;i<middle_pillar_light_right_side.children.length;i++){
+      middle_pillar_light_right_side.children[i].getComponent(UIOpacity).opacity = 0;
+    }
+
   }
 
   private animateLight_1_Flare(): void {
