@@ -288,24 +288,52 @@ export class BackgroundLightHandler extends Component {
     }).start();
   }
 
+  // private animateLight_2_Flare(): void {
+  //   const left_flare = this.light_2_flare.getChildByName("left-side");
+  //   const right_flare = this.light_2_flare.getChildByName("right-side");
+
+  //   const left_ui_opacity = left_flare.getComponent(UIOpacity);
+  //   const right_ui_opacity = right_flare.getComponent(UIOpacity);
+
+  //   tween(left_ui_opacity).to(1, { opacity: 255 }).start();
+
+  //   tween(right_ui_opacity)
+  //     .to(1, { opacity: 255 })
+  //     .call(() => {
+  //       // this.animateMiddlePillarLights();
+  //       // this.animateSideWallLights();
+  //     })
+  //     .start();
+
+  //     this.animateMiddlePillarLights();
+  //     this.animateSideWallLights();
+  // }
+
   private animateLight_2_Flare(): void {
     const left_flare = this.light_2_flare.getChildByName("left-side");
     const right_flare = this.light_2_flare.getChildByName("right-side");
-
+  
     const left_ui_opacity = left_flare.getComponent(UIOpacity);
     const right_ui_opacity = right_flare.getComponent(UIOpacity);
-
-    tween(left_ui_opacity).to(1, { opacity: 255 }).start();
-
+  
+    // Continuous fade-in and fade-out for left flare
+    tween(left_ui_opacity)
+      .to(1, { opacity: 255 })  // Fade in
+      .to(1, { opacity: 0 })    // Fade out
+      .union()                  // Group to keep timing consistent
+      .repeatForever()          // Loop the tween indefinitely
+      .start();
+  
+    // Continuous fade-in and fade-out for right flare
     tween(right_ui_opacity)
-      .to(1, { opacity: 255 })
-      .call(() => {
-        // this.animateMiddlePillarLights();
-        // this.animateSideWallLights();
-      })
+      .to(1, { opacity: 255 })  // Fade in
+      .to(1, { opacity: 0 })    // Fade out
+      .union()
+      .repeatForever()
       .start();
 
-      this.animateMiddlePillarLights();
-      this.animateSideWallLights();
+    this.animateMiddlePillarLights();
+    this.animateSideWallLights();
   }
+  
 }
