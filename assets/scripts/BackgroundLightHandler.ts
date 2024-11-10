@@ -22,14 +22,12 @@ export class BackgroundLightHandler extends Component {
     console.log("BackgroundLightHandler init");
     this.setupInitialLightEffects();
     this.animateLight_1_Flare();
-    this.animateMiddlePillarLights();
-
-    this.animateSideWallLights();
-    this.animateLight_Side_Flare();
+    // this.animateMiddlePillarLights();
+    // this.animateSideWallLights();
   }
 
   private setupInitialLightEffects(): void {
-    // light_2_flare
+    // light_1_flare
     const light_1_flare_left_side =
       this.light_1_flare.getChildByName("left-side");
     const light_1_flare_right_side =
@@ -45,6 +43,9 @@ export class BackgroundLightHandler extends Component {
       this.light_2_flare.getChildByName("left-side");
     const light_2_flare_right_side =
       this.light_2_flare.getChildByName("right-side");
+
+    light_2_flare_left_side.getComponent(UIOpacity).opacity = 0;
+    light_2_flare_right_side.getComponent(UIOpacity).opacity = 0;
 
     // light_side_flare
     const light_side_flare_left_side =
@@ -169,7 +170,7 @@ export class BackgroundLightHandler extends Component {
           .to(1, { opacity: 255 })
           .call(() => {
             console.log("light_1_flare finished");
-            // this.animateMiddlePillarLights();
+            this.animateLight_Side_Flare();
           })
           .start();
       })
@@ -280,8 +281,31 @@ export class BackgroundLightHandler extends Component {
     const left_ui_opacity = left_side_flare.getComponent(UIOpacity);
     const right_ui_opacity = right_side_flare.getComponent(UIOpacity);
 
-    tween(left_ui_opacity).to(1, { opacity: 255 }).repeatForever().start();
+    tween(left_ui_opacity).to(1, { opacity: 255 }).start();
 
-    tween(right_ui_opacity).to(1, { opacity: 255 }).repeatForever().start();
+    tween(right_ui_opacity).to(1, { opacity: 255 }).call(()=>{
+      this.animateLight_2_Flare();
+    }).start();
+  }
+
+  private animateLight_2_Flare(): void {
+    const left_flare = this.light_2_flare.getChildByName("left-side");
+    const right_flare = this.light_2_flare.getChildByName("right-side");
+
+    const left_ui_opacity = left_flare.getComponent(UIOpacity);
+    const right_ui_opacity = right_flare.getComponent(UIOpacity);
+
+    tween(left_ui_opacity).to(1, { opacity: 255 }).start();
+
+    tween(right_ui_opacity)
+      .to(1, { opacity: 255 })
+      .call(() => {
+        // this.animateMiddlePillarLights();
+        // this.animateSideWallLights();
+      })
+      .start();
+
+      this.animateMiddlePillarLights();
+      this.animateSideWallLights();
   }
 }
