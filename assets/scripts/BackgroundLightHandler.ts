@@ -25,6 +25,7 @@ export class BackgroundLightHandler extends Component {
     this.animateMiddlePillarLights();
 
     this.animateSideWallLights();
+    this.animateLight_Side_Flare();
   }
 
   private setupInitialLightEffects(): void {
@@ -45,26 +46,31 @@ export class BackgroundLightHandler extends Component {
     const light_2_flare_right_side =
       this.light_2_flare.getChildByName("right-side");
 
-
     // light_side_flare
     const light_side_flare_left_side =
       this.light_side_flare.getChildByName("left-side");
     const light_side_flare_right_side =
       this.light_side_flare.getChildByName("right-side");
 
+    light_side_flare_left_side.getComponent(UIOpacity).opacity = 0;
+    light_side_flare_right_side.getComponent(UIOpacity).opacity = 0;
+
     // middle pillar lights
     const middle_pillar_light_left_side =
       this.middle_pillar_light.getChildByName("left-pillar");
     const middle_pillar_light_right_side =
       this.middle_pillar_light.getChildByName("right-pillar");
-    
-    for(let i=0;i<middle_pillar_light_left_side.children.length;i++){
-      middle_pillar_light_left_side.children[i].getComponent(UIOpacity).opacity = 0;
-    }
-    for(let i=0;i<middle_pillar_light_right_side.children.length;i++){
-      middle_pillar_light_right_side.children[i].getComponent(UIOpacity).opacity = 0;
-    }
 
+    for (let i = 0; i < middle_pillar_light_left_side.children.length; i++) {
+      middle_pillar_light_left_side.children[i].getComponent(
+        UIOpacity
+      ).opacity = 0;
+    }
+    for (let i = 0; i < middle_pillar_light_right_side.children.length; i++) {
+      middle_pillar_light_right_side.children[i].getComponent(
+        UIOpacity
+      ).opacity = 0;
+    }
 
     // side wall light
     const side_wall_light_left_side =
@@ -72,35 +78,75 @@ export class BackgroundLightHandler extends Component {
     const side_wall_light_right_side =
       this.side_wall_light.getChildByName("right-wall");
 
-    const side_wall_light_left_side_first_row_lights = side_wall_light_left_side.getChildByName("first-row-lights");
-    const side_wall_light_left_side_second_row_lights = side_wall_light_left_side.getChildByName("second-row-lights");
-    const side_wall_light_left_side_third_row_lights = side_wall_light_left_side.getChildByName("third-row-lights");
+    const side_wall_light_left_side_first_row_lights =
+      side_wall_light_left_side.getChildByName("first-row-lights");
+    const side_wall_light_left_side_second_row_lights =
+      side_wall_light_left_side.getChildByName("second-row-lights");
+    const side_wall_light_left_side_third_row_lights =
+      side_wall_light_left_side.getChildByName("third-row-lights");
 
-    for(let i=0;i<side_wall_light_left_side_first_row_lights.children.length;i++){
-      side_wall_light_left_side_first_row_lights.children[i].getComponent(UIOpacity).opacity = 0;
+    for (
+      let i = 0;
+      i < side_wall_light_left_side_first_row_lights.children.length;
+      i++
+    ) {
+      side_wall_light_left_side_first_row_lights.children[i].getComponent(
+        UIOpacity
+      ).opacity = 0;
     }
-    for(let i=0;i<side_wall_light_left_side_second_row_lights.children.length;i++){
-      side_wall_light_left_side_second_row_lights.children[i].getComponent(UIOpacity).opacity = 0;
+    for (
+      let i = 0;
+      i < side_wall_light_left_side_second_row_lights.children.length;
+      i++
+    ) {
+      side_wall_light_left_side_second_row_lights.children[i].getComponent(
+        UIOpacity
+      ).opacity = 0;
     }
-    for(let i=0;i<side_wall_light_left_side_third_row_lights.children.length;i++){
-      side_wall_light_left_side_third_row_lights.children[i].getComponent(UIOpacity).opacity = 0;
+    for (
+      let i = 0;
+      i < side_wall_light_left_side_third_row_lights.children.length;
+      i++
+    ) {
+      side_wall_light_left_side_third_row_lights.children[i].getComponent(
+        UIOpacity
+      ).opacity = 0;
     }
 
+    const side_wall_light_right_side_first_row_lights =
+      side_wall_light_right_side.getChildByName("first-row-lights");
+    const side_wall_light_right_side_second_row_lights =
+      side_wall_light_right_side.getChildByName("second-row-lights");
+    const side_wall_light_right_side_third_row_lights =
+      side_wall_light_right_side.getChildByName("third-row-lights");
 
-    const side_wall_light_right_side_first_row_lights = side_wall_light_right_side.getChildByName("first-row-lights");
-    const side_wall_light_right_side_second_row_lights = side_wall_light_right_side.getChildByName("second-row-lights");
-    const side_wall_light_right_side_third_row_lights = side_wall_light_right_side.getChildByName("third-row-lights");
-
-    for(let i=0;i<side_wall_light_right_side_first_row_lights.children.length;i++){
-      side_wall_light_right_side_first_row_lights.children[i].getComponent(UIOpacity).opacity = 0;
+    for (
+      let i = 0;
+      i < side_wall_light_right_side_first_row_lights.children.length;
+      i++
+    ) {
+      side_wall_light_right_side_first_row_lights.children[i].getComponent(
+        UIOpacity
+      ).opacity = 0;
     }
-    for(let i=0;i<side_wall_light_right_side_second_row_lights.children.length;i++){
-      side_wall_light_right_side_second_row_lights.children[i].getComponent(UIOpacity).opacity = 0;
+    for (
+      let i = 0;
+      i < side_wall_light_right_side_second_row_lights.children.length;
+      i++
+    ) {
+      side_wall_light_right_side_second_row_lights.children[i].getComponent(
+        UIOpacity
+      ).opacity = 0;
     }
-    for(let i=0;i<side_wall_light_right_side_third_row_lights.children.length;i++){
-      side_wall_light_right_side_third_row_lights.children[i].getComponent(UIOpacity).opacity = 0;
+    for (
+      let i = 0;
+      i < side_wall_light_right_side_third_row_lights.children.length;
+      i++
+    ) {
+      side_wall_light_right_side_third_row_lights.children[i].getComponent(
+        UIOpacity
+      ).opacity = 0;
     }
-
   }
 
   private animateLight_1_Flare(): void {
@@ -131,8 +177,10 @@ export class BackgroundLightHandler extends Component {
   }
 
   private animateMiddlePillarLights(): void {
-    const leftPillarChildren = this.middle_pillar_light.getChildByName("left-pillar").children;
-    const rightPillarChildren = this.middle_pillar_light.getChildByName("right-pillar").children;
+    const leftPillarChildren =
+      this.middle_pillar_light.getChildByName("left-pillar").children;
+    const rightPillarChildren =
+      this.middle_pillar_light.getChildByName("right-pillar").children;
 
     const animateLights = (lights: Node[]) => {
       lights.forEach((light, index) => {
@@ -151,80 +199,89 @@ export class BackgroundLightHandler extends Component {
     }, 1);
   }
 
+  //   private animateSideWallLights(): void {
+  //     // Get rows of lights on both left and right sides
+  //     const sideWallLeft = this.side_wall_light.getChildByName("left-wall");
+  //     const sideWallRight = this.side_wall_light.getChildByName("right-wall");
 
-//   private animateSideWallLights(): void {
-//     // Get rows of lights on both left and right sides
-//     const sideWallLeft = this.side_wall_light.getChildByName("left-wall");
-//     const sideWallRight = this.side_wall_light.getChildByName("right-wall");
-  
-//     const leftRows = [
-//       sideWallLeft.getChildByName("first-row-lights"),
-//       sideWallLeft.getChildByName("second-row-lights"),
-//       sideWallLeft.getChildByName("third-row-lights")
-//     ];
-  
-//     const rightRows = [
-//       sideWallRight.getChildByName("first-row-lights"),
-//       sideWallRight.getChildByName("second-row-lights"),
-//       sideWallRight.getChildByName("third-row-lights")
-//     ];
-  
-//     const animateRowLights = (rows: Node[]) => {
-//       rows.forEach((row, rowIndex) => {
-//         row.children.forEach((light, lightIndex) => {
-//           const uiOpacity = light.getComponent(UIOpacity);
-//           tween(uiOpacity)
-//             .delay(rowIndex * 0.4 + lightIndex * 0.2) // Sequential delay
-//             .to(0.3, { opacity: 255 })  // Fade in
-//             .to(0.3, { opacity: 0 })    // Fade out
-//             .start();
-//         });
-//       });
-//     };
-  
-//     // Schedule continuous animation for left and right wall lights
-//     this.schedule(() => {
-//       animateRowLights(leftRows);
-//       animateRowLights(rightRows);
-//     }, 2); // Repeat every 2 seconds
-//   }
+  //     const leftRows = [
+  //       sideWallLeft.getChildByName("first-row-lights"),
+  //       sideWallLeft.getChildByName("second-row-lights"),
+  //       sideWallLeft.getChildByName("third-row-lights")
+  //     ];
 
+  //     const rightRows = [
+  //       sideWallRight.getChildByName("first-row-lights"),
+  //       sideWallRight.getChildByName("second-row-lights"),
+  //       sideWallRight.getChildByName("third-row-lights")
+  //     ];
 
-private animateSideWallLights(): void {
+  //     const animateRowLights = (rows: Node[]) => {
+  //       rows.forEach((row, rowIndex) => {
+  //         row.children.forEach((light, lightIndex) => {
+  //           const uiOpacity = light.getComponent(UIOpacity);
+  //           tween(uiOpacity)
+  //             .delay(rowIndex * 0.4 + lightIndex * 0.2) // Sequential delay
+  //             .to(0.3, { opacity: 255 })  // Fade in
+  //             .to(0.3, { opacity: 0 })    // Fade out
+  //             .start();
+  //         });
+  //       });
+  //     };
+
+  //     // Schedule continuous animation for left and right wall lights
+  //     this.schedule(() => {
+  //       animateRowLights(leftRows);
+  //       animateRowLights(rightRows);
+  //     }, 2); // Repeat every 2 seconds
+  //   }
+
+  private animateSideWallLights(): void {
     // Get rows of lights on both left and right sides
     const sideWallLeft = this.side_wall_light.getChildByName("left-wall");
     const sideWallRight = this.side_wall_light.getChildByName("right-wall");
-  
+
     const leftRows = [
       sideWallLeft.getChildByName("first-row-lights"),
       sideWallLeft.getChildByName("second-row-lights"),
-      sideWallLeft.getChildByName("third-row-lights")
+      sideWallLeft.getChildByName("third-row-lights"),
     ];
-  
+
     const rightRows = [
       sideWallRight.getChildByName("first-row-lights"),
       sideWallRight.getChildByName("second-row-lights"),
-      sideWallRight.getChildByName("third-row-lights")
+      sideWallRight.getChildByName("third-row-lights"),
     ];
-  
+
     const animateRowLights = (rows: Node[]) => {
       rows.forEach((row, rowIndex) => {
         row.children.forEach((light, lightIndex) => {
           const uiOpacity = light.getComponent(UIOpacity);
           tween(uiOpacity)
             .delay(lightIndex * 0.2) // Sequential delay
-            .to(0.3, { opacity: 255 })  // Fade in
-            .to(0.3, { opacity: 0 })    // Fade out
+            .to(0.3, { opacity: 255 }) // Fade in
+            .to(0.3, { opacity: 0 }) // Fade out
             .start();
         });
       });
     };
-  
+
     // Schedule continuous animation for left and right wall lights
     this.schedule(() => {
       animateRowLights(leftRows);
       animateRowLights(rightRows);
     }, 1.25); // Repeat every 1.5 seconds
   }
-  
+
+  private animateLight_Side_Flare(): void {
+    const left_side_flare = this.light_side_flare.getChildByName("left-side");
+    const right_side_flare = this.light_side_flare.getChildByName("right-side");
+
+    const left_ui_opacity = left_side_flare.getComponent(UIOpacity);
+    const right_ui_opacity = right_side_flare.getComponent(UIOpacity);
+
+    tween(left_ui_opacity).to(1, { opacity: 255 }).repeatForever().start();
+
+    tween(right_ui_opacity).to(1, { opacity: 255 }).repeatForever().start();
+  }
 }
